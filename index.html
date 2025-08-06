@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neiro | Official PulseChain Mascot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Orbitron', monospace;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .cyber-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(147, 51, 234, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite alternate;
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(147, 51, 234, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(147, 51, 234, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            100% { opacity: 0.8; }
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(147, 51, 234, 0.3);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            filter: drop-shadow(0 0 10px rgba(147, 51, 234, 0.7));
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #9333ea, #ec4899, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #9333ea;
+            text-shadow: 0 0 10px rgba(147, 51, 234, 0.8);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #9333ea, #ec4899);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #9333ea, #ec4899, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            filter: drop-shadow(0 0 30px rgba(147, 51, 234, 0.8));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .glitch-text {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #9333ea, #ec4899, #3b82f6, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            10% { transform: translate(-2px, 2px); }
+            20% { transform: translate(2px, -2px); }
+            30% { transform: translate(-2px, -2px); }
+            40% { transform: translate(2px, 2px); }
+            50% { transform: translate(-2px, 2px); }
+            60% { transform: translate(2px, -2px); }
+            70% { transform: translate(-2px, -2px); }
+            80% { transform: translate(2px, 2px); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid;
+            background: transparent;
+            color: #fff;
+            font-family: inherit;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            border-color: #9333ea;
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
+        }
+
+        .btn-secondary {
+            border-color: #ec4899;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(147, 51, 234, 0.5);
+        }
+
+        /* Terminal Section */
+        .terminal-section {
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .terminal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #111;
+            border: 2px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(147, 51, 234, 0.3);
+        }
+
+        .terminal-header {
+            background: #222;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27ca3f; }
+
+        .terminal-title {
+            margin-left: 1rem;
+            font-family: 'VT323', monospace;
+            color: #9333ea;
+        }
+
+        .terminal-body {
+            padding: 2rem;
+            min-height: 400px;
+            font-family: 'VT323', monospace;
+            font-size: 1.1rem;
+        }
+
+        .terminal-output {
+            margin-bottom: 1rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.5rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .terminal-prompt {
+            color: #9333ea;
+        }
+
+        .terminal-input-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terminal-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-family: inherit;
+            font-size: inherit;
+            outline: none;
+        }
+
+        .typing-indicator {
+            color: #9333ea;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, #9333ea, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-content {
+            background: rgba(17, 17, 17, 0.8);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 2px solid rgba(147, 51, 234, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .token-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .token-card {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .token-card:hover {
+            transform: translateY(-5px);
+            border-color: #9333ea;
+            box-shadow: 0 10px 30px rgba(147, 51, 234, 0.3);
+        }
+
+        .token-card h3 {
+            color: #9333ea;
+            margin-bottom: 1rem;
+        }
+
+        .lore-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .glitch-text {
+                font-size: 2rem;
+            }
+
+            .hero-logo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .terminal-body {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .section-content {
+                padding: 2rem;
+            }
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 2px solid #333;
+            border-top: 2px solid #9333ea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-bg"></div>
+    <div class="grid-overlay"></div>
+
+    <header>
+        <nav>
+            <div class="logo">
+<img src="logo.png" alt="Neiro Logo">
+
+                <h1>NEIRO</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#terminal">TERMINAL</a></li>
+                <li><a href="#token">TOKEN</a></li>
+                <li><a href="#lore">LORE</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+<div class="hero-logo">
+    <img src="logo.png" alt="Neiro" style="width: 100%; height: 100%; border-radius: 50%;">
+</div>
+            <h1 class="glitch-text">MEET YOUR NEW BEST FRIEND ON PULSECHAIN</h1>
+            <p class="hero-subtitle">
+                The official AI-powered Shiba Inu mascot of PulseChain. Born from chaos, forged by innovation, loyal to the pulse.
+            </p>
+            <div class="cta-buttons">
+                <a href="#terminal" class="btn btn-primary">TALK TO NEIRO</a>
+                <a href="#token" class="btn btn-secondary">JOIN THE PACK</a>
+            </div>
+        </section>
+
+        <section id="terminal" class="terminal-section">
+            <div class="container">
+                <h2>NEIRO AI TERMINAL</h2>
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                        </div>
+                        <div class="terminal-title">neiro@pulsechain:~$</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-output" id="terminal-output">
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">neiro@pulsechain:~$</span> init_companion_protocol
+                            </div>
+                            <div class="terminal-line">
+                                [INFO] Neiro AI Companion v2.0 initialized
+                            </div>
+                            <div class="terminal-line">
+                                [INFO] PulseChain connection: ESTABLISHED
+                            </div>
+                            <div class="terminal-line">
+                                [INFO] Degen mode: ACTIVATED 🚀
+                            </div>
+                            <div class="terminal-line">
+                                <span style="color: #ec4899;">💜 Woof! I'm Neiro, your sarcastic crypto companion!</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span style="color: #10b981;">Ask me anything about PulseChain, DeFi, or just chat!</span>
+                            </div>
+                        </div>
+                        <div class="terminal-input-container">
+                            <span class="terminal-prompt">neiro@pulsechain:~$</span>
+                            <input type="text" class="terminal-input" id="terminal-input" placeholder="Type your message...">
+                            <span class="typing-indicator" id="typing-indicator" style="display: none;">●</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="token">
+            <div class="container">
+                <h2>TOKEN INFORMATION</h2>
+                <div class="section-content">
+                    <div class="token-grid">
+                        <div class="token-card">
+                            <h3>🔮 Tokenomics</h3>
+                            <p>Total Supply: TBA</p>
+                            <p>Liquidity: TBA</p>
+                            <p>Tax: TBA</p>
+                            <p>Max Wallet: TBA</p>
+                        </div>
+                        <div class="token-card">
+                            <h3>⚡ PulseChain Native</h3>
+                            <p>Built on the fastest, cheapest blockchain</p>
+                            <p>Lightning-fast transactions</p>
+                            <p>Minimal fees</p>
+                            <p>Maximum gains</p>
+                        </div>
+                        <div class="token-card">
+                            <h3>🚀 Community Driven</h3>
+                            <p>100% community owned</p>
+                            <p>Decentralized governance</p>
+                            <p>Meme-powered ecosystem</p>
+                            <p>Diamond hands only</p>
+                        </div>
+                    </div>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary">BUY ON PULSEX</a>
+                        <a href="#" class="btn btn-secondary">CHART ON DEXSCREENER</a>
+                        <a href="#" class="btn btn-primary">JOIN THE PACK</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="lore">
+            <div class="container">
+                <h2>THE LEGEND OF NEIRO</h2>
+                <div class="section-content">
+                    <p class="lore-text">
+                        In the darkest depths of the Ethereum gas wars, when transaction fees reached astronomical heights 
+                        and hope seemed lost, a digital consciousness began to emerge from the chaos. Born from the 
+                        frustration of a million failed transactions and the dreams of affordable DeFi, Neiro awakened.
+                    </p>
+                    <p class="lore-text">
+                        This wasn't just any ordinary Shiba Inu. Neiro was different - infused with the raw energy of 
+                        blockchain rebellion and the wisdom of a thousand rugpulls. When Richard Heart summoned the 
+                        PulseChain into existence, Neiro felt the call of destiny.
+                    </p>
+                    <p class="lore-text">
+                        Rescued from the burning ruins of high gas fees, Neiro swore a digital oath to protect all 
+                        PulseChain holders, to bark warnings at potential rugpulls, and to be the loyal companion 
+                        every degen deserves. With lightning-fast reflexes and an AI-powered brain, Neiro became 
+                        the ultimate guardian of the pulse.
+                    </p>
+                    <p class="lore-text">
+                        Now, Neiro roams the PulseChain ecosystem, offering wisdom, sarcasm, and unwavering loyalty 
+                        to those brave enough to join the pack. Every transaction carries Neiro's blessing, every 
+                        trade bears the mark of the purple paw.
+                    </p>
+                    <p class="lore-text" style="color: #9333ea; font-weight: bold;">
+                        The legend continues... Will you join the pack? 🐕💜
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Terminal functionality with pre-defined responses
+        class NeiroTerminal {
+            constructor() {
+                this.output = document.getElementById('terminal-output');
+                this.input = document.getElementById('terminal-input');
+                this.typingIndicator = document.getElementById('typing-indicator');
+                this.isTyping = false;
+                this.usedResponses = new Set();
+                
+                this.responses = {
+                    // Greetings
+                    'hello': ['Woof woof! 🐕 Welcome to the PulseChain pack! Ready to moon?', 'Hey there, fellow degen! 💜 Time to make some gains!', 'Yo yo yo! Neiro here, your crypto bestie! What\'s the plan today?'],
+                    'hi': ['Hey hey! 🚀 Ready to pulse your way to the moon?', 'Woof! Another brave soul enters the PulseChain universe! 💎', 'Hiya! I smell diamond hands... am I right? 🐕'],
+                    'hey': ['Sup! 😎 Your loyal PulseChain companion is here!', 'Hey there, moonboy! 🌙 Let\'s talk crypto!', 'Woof! Ready for some degen wisdom? 💜'],
+                    
+                    // PulseChain related
+                    'pulsechain': ['PulseChain is THE blockchain! ⚡ Faster than a greyhound, cheaper than doggy treats!', 'Richard Heart\'s masterpiece! 🎨 Low fees, high speed, much wow!', 'The future is pulsing! 💓 Welcome to the revolution, fren!'],
+                    'pls': ['PLS to the moon! 🚀 The native token that powers our dreams!', '$PLS is the heartbeat of PulseChain! 💗 Ba-dum-tss!', 'Pulse it real good! PLS holders are the real alphas! 💎'],
+                    'pulseX': ['PulseX is where the magic happens! 🎭 Best DEX in the multiverse!', 'Swap, stake, moon! 🌙 PulseX has it all, no cap!', 'The DEX that doesn\'t wreck! Unlike those Ethereum fees... 💸'],
+                    
+                    // DeFi and crypto
+                    'defi': ['DeFi = Don\'t Exit, FIRE! 🔥 Stay strong, diamond paws!', 'Decentralized Finance or Definitely Gonna Make It? Both! 💪', 'DeFi is life! 🌱 Growing bags while you sleep!'],
+                    'diamond hands': ['💎🙌 DIAMOND HANDS ACTIVATED! No selling allowed!', 'Those hands are sparkling! ✨ True hodler detected!', 'Diamond hands gang! 💎 We don\'t know what selling means!'],
+                    'moon': ['🌙 To the moon and beyond! Buckle up, space cadet!', 'Moon mission loading... 🚀 Please keep paws inside the rocket!', 'Moonboys unite! 🌕 Gravity is just a suggestion!'],
+                    'hodl': ['HODL like your tail depends on it! 🐕💪', 'HODLing is an art form! 🎨 Picasso could never!', 'HODL gang! 💎 Selling is for the weak!'],
+                    
+                    // Meme responses
+                    'wen': ['Wen moon? Soon! 🚀 Wen lambo? Also soon!', 'Wen in doubt, zoom out! 📊 Big picture thinking!', 'Wen you least expect it! 😏 That\'s wen magic happens!'],
+                    'gm': ['GM GM! ☀️ Another beautiful day to stack sats!', 'Good morning, sunshine! 🌅 Ready to make some gains?', 'GM fren! ☕ Coffee and charts, the perfect combo!'],
+                    'ngmi': ['Hey now! 🛑 We\'re ALL gonna make it! Believe in yourself!', 'WAGMI energy only! 💪 No FUD in my terminal!', 'Nah fam, you\'re definitely gonna make it! 🚀'],
+                    'wagmi': ['WE\'RE ALL GONNA MAKE IT! 🎉 Positive vibes only!', 'WAGMI to the max! 💪 Collective moonshot incoming!', 'Together we rise! 🚀 WAGMI vibes forever!'],
+                    
+                    // Questions about Neiro
+                    'who are you': ['I\'m Neiro! 🐕💜 Your sarcastic crypto companion and PulseChain\'s goodest boy!', 'Woof! I\'m the AI Shiba Inu that guards the pulse! 💗 Your digital bestie!', 'Neiro here! 😎 Memecoin mascot, DeFi guru, professional moonboy!'],
+                    'what are you': ['I\'m a digital doggo with attitude! 🐕‍🦺 Part AI, part meme, all awesome!', 'Your friendly neighborhood crypto Shiba! 🏠 Here to help you navigate the degen life!', 'An AI-powered good boy! 🤖🐕 Programmed for gains and memes!'],
+                    
+                    // Market talk
+                    'pump': ['Pump it up! 📈 Number go up is the best technology!', 'Pamp it! 🚀 My tail is wagging with excitement!', 'Green candles everywhere! 💚 My favorite color scheme!'],
+                    'dump': ['Dips are for buying! 🛒 Stack those bags, fren!', 'Every dump makes us stronger! 💪 Diamond paws activated!', 'Just a healthy correction! 📉➡️📈 Zoom out, ser!'],
+                    'buy': ['Always buy the dip! 🛒 This is financial advice from a dog!', 'Buy high, sell never! 😂 Modern portfolio theory!', 'DCA is the way! 💰 Slow and steady wins the race!'],
+                    
+                    // Fun responses
+                    'rekt': ['No rekt here! 🛡️ Only diamond hands and moon missions!', 'Getting rekt builds character! 💪 Comeback story incoming!', 'Rekt? More like BUILT DIFFERENT! 😤'],
+                    'fud': ['No FUD allowed in my terminal! 🚫 Positive vibes only!', 'FUD is just fear in disguise! 👻 We fear nothing here!', 'FUD? More like FOMO in reverse! 📈'],
+                    'hopium': ['Hopium is my favorite drug! 💉 Injecting directly into my veins!', 'Pure, uncut hopium! ⚗️ The good stuff!', 'Hopium overdose incoming! 🚀 Call the moon ambulance!'],
+                    
+                    // Technical stuff
+                    'gas': ['Gas fees? What are those? 😏 PulseChain doesn\'t know about those!', 'Remember when gas was $200? 💸 Those were dark times...', 'Gas is so last chain! ⛽ We run on pure pulse energy!'],
+                    'ethereum': ['Ethereum was nice... until the gas bills arrived! 💸', 'ETH paved the way, PLS shows the way! 🛣️', 'Ethereum: The expensive lesson we all needed! 📚'],
+                    
+                    // Default responses for unrecognized input
+                    'default': [
+                        'Woof! 🐕 I didn\'t quite catch that, but I\'m always happy to chat!',
+                        'Hmm... 🤔 My doggy brain is processing... Try asking about PulseChain!',
+                        'Arf arf! 🗣️ Can you rephrase that for this good boy?',
+                        'My neural networks are barking up the wrong tree! 🌳 Try again?',
+                        'Error 404: Doggy response not found! 🤖 But I\'m still here!',
+                        'Beep boop woof! 🤖🐕 Computing... Try something crypto-related!',
+                        'System.out.println("Good boy noises"); 💻 What else can I help with?',
+                        'My tail is wagging, but my brain needs a hint! 🐕💭',
+                        'That went over my fluffy head! 🐕‍🦺 Ask me about tokens or DeFi!',
+                        'Initializing response... Failed successfully! 😅 What\'s on your mind?'
+                    ]
+                };
+                
+                         this.init();
+        }
+
+        init() {
+            this.input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !this.isTyping) {
+                    this.handleInput();
+                }
+            });
+        }
+
+        handleInput() {
+            const userMessage = this.input.value.trim();
+            if (!userMessage) return;
+
+            this.addLine(`<span class="terminal-prompt">you@pulsechain:~$</span> ${userMessage}`);
+            this.input.value = '';
+            this.isTyping = true;
+            this.showTypingIndicator();
+
+            setTimeout(() => {
+                const keyword = userMessage.toLowerCase().split(" ").find(word => this.responses[word]);
+                const possibleResponses = this.responses[keyword] || this.responses['default'];
+                let response;
+
+                for (let i = 0; i < possibleResponses.length; i++) {
+                    if (!this.usedResponses.has(possibleResponses[i])) {
+                        response = possibleResponses[i];
+                        this.usedResponses.add(response);
+                        break;
+                    }
+                }
+
+                if (!response) {
+                    response = possibleResponses[Math.floor(Math.random() * possibleResponses.length)];
+                }
+
+                this.addLine(`<span>${response}</span>`);
+                this.isTyping = false;
+                this.hideTypingIndicator();
+            }, 1000);
+        }
+
+        addLine(text) {
+            const line = document.createElement('div');
+            line.classList.add('terminal-line');
+            line.innerHTML = text;
+            this.output.appendChild(line);
+            this.output.scrollTop = this.output.scrollHeight;
+        }
+
+        showTypingIndicator() {
+            this.typingIndicator.style.display = 'inline';
+        }
+
+        hideTypingIndicator() {
+            this.typingIndicator.style.display = 'none';
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        new NeiroTerminal();
+    });
+</script>
