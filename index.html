@@ -620,6 +620,10 @@
     </main>
 
     <script>
+if (window.top !== window.self) {
+    window.top.location = window.location.href;
+}
+
         // Terminal functionality with pre-defined responses
         class NeiroTerminal {
             constructor() {
