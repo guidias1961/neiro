@@ -370,12 +370,13 @@
             backdrop-filter: blur(10px);
         }
 
-        .token-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
+.token-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
 
         .token-card {
             background: rgba(0, 0, 0, 0.5);
@@ -440,6 +441,16 @@
             .section-content {
                 padding: 2rem;
             }
+    .token-card {
+        width: 100%;
+        word-break: break-word;
+        padding: 1.5rem;
+    }
+
+    .token-card h3 {
+        word-break: break-word;
+    }
+
         }
 
         /* Loading Spinner */
